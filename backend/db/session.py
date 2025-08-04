@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.pool import QueuePool
 from sqlalchemy.orm import sessionmaker
-from db.base import Base
 
 
 class Session:
