@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
-from db.base import Base
+from db import Base
 
 
 class Order(Base):

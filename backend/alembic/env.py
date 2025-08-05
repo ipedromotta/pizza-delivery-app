@@ -20,7 +20,7 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-from db.base import Base
+from db import Base
 import models # Para o alembic reconhecer as tabelas
 target_metadata = Base.metadata
 
