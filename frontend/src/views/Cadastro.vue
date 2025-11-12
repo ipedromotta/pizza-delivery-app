@@ -51,28 +51,23 @@ async function onSubmit() {
         <h1 class="h3 mb-3 fw-normal">Cadastre-se</h1>
 
         <div class="form-floating mb-2">
-          <input v-model="form.first_name" required type="text" maxlength="15" class="form-control" id="floatingName" placeholder="Seu nome">
-          <label for="floatingName">Nome</label>
+          <input v-model="form.first_name" required type="text" maxlength="15" class="form-control" id="floatingName" placeholder="Seu Nome">
         </div>
 
         <div class="form-floating mb-2">
           <input v-model="form.email" required type="email" maxlength="50" class="form-control" id="floatingEmail" placeholder="email@exemplo.com">
-          <label for="floatingEmail">Email</label>
         </div>
 
         <div class="form-floating mb-2">
-          <input v-model="form.username" required type="text" maxlength="15" class="form-control" id="floatingInput" placeholder="seu-usuario">
-          <label for="floatingInput">Usuário</label>
+          <input v-model="form.username" required type="text" maxlength="15" class="form-control" id="floatingInput" placeholder="Seu Usuário">
         </div>
 
         <div class="form-floating mb-2">
-          <input v-model="form.password" required type="password" class="form-control" id="floatingPassword" placeholder="senha">
-          <label for="floatingPassword">Senha</label>
+          <input v-model="form.password" required type="password" class="form-control" id="floatingPassword" placeholder="Senha">
         </div>
 
         <div class="form-floating">
-          <input v-model="form.password_confirm" required type="password" class="form-control" id="floatingPassword2" placeholder="confirme sua senha">
-          <label for="floatingPassword2">Confirme sua senha</label>
+          <input v-model="form.password_confirm" required type="password" class="form-control" id="floatingPassword2" placeholder="Confirme sua senha">
         </div>
 
         <div class="alert alert-danger" role="alert" v-if="errors.length">

@@ -43,7 +43,6 @@ function onSubmit() {
       <p>Digite o endereço de e-mail verificado da sua conta de usuário e nós lhe enviaremos um link de redefinição de senha</p>
       <div class="form-floating mb-2">
         <input @input="errors=''" v-model="form.email" required type="email" maxlength="50" class="form-control" id="floatingEmail" placeholder="email@exemplo.com">
-        <label for="floatingEmail">Email</label>
       </div>
       
       <div class="alert alert-danger" role="alert" v-if="errors.length">
