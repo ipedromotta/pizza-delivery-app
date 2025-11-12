@@ -24,13 +24,11 @@ function onSubmit() {}
         <h1 class="h3 mb-3 fw-normal">Fazer login</h1>
 
         <div class="form-floating">
-          <input v-model="form.username" type="text" required maxlength="15" class="form-control" id="floatingInput" placeholder="seu-usuario">
-          <label for="floatingInput">Usuário</label>
+          <input v-model="form.username" type="text" required maxlength="15" class="form-control" id="floatingInput" placeholder="Usuário">
         </div>
 
         <div class="form-floating">
-          <input v-model="form.password" type="password" required class="form-control" id="floatingPassword" placeholder="senha">
-          <label for="floatingPassword">Senha</label>
+          <input v-model="form.password" type="password" required class="form-control" id="floatingPassword" placeholder="Senha">
         </div>
 
         <p :class="`small pb-lg-2 ${errors.length? 'mb-0' : 'mb-5'}`"><RouterLink class="text-danger link" to="/esqueceu-senha">Esqueceu sua senha?</RouterLink></p>
