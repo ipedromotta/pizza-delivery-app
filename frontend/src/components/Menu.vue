@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 const categorias = [
@@ -8,7 +8,15 @@ const categorias = [
   'Vegetarianas'
 ];
 
+const emit = defineEmits(['selecionarCategoria']);
 const categoriaSelecionada = ref('Todas');
+
+function selecionarCategoria(categoria: string) {
+  emit('selecionarCategoria', categoria)
+  categoriaSelecionada.value = categoria
+}
+
+
 </script>
 
 <template>
@@ -17,7 +25,7 @@ const categoriaSelecionada = ref('Todas');
             v-for="cat in categorias" 
             :key="cat"
             :class="['categoria-item', categoriaSelecionada === cat ? 'active' : '']"
-            @click="categoriaSelecionada = cat"
+            @click="selecionarCategoria(cat)"
         >
             {{ cat }}
         </button>
