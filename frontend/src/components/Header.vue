@@ -1,7 +1,7 @@
-<script setup>
-import { useRouter } from 'vue-router';
+<script setup lang="ts">
+import { useHeaderStore } from '@/stores/header';
 
-const router = useRouter()
+const headerStore = useHeaderStore();
 
 </script>
 
@@ -24,6 +24,9 @@ const router = useRouter()
             <!-- ICONES -->
             <div class="d-flex align-items-center ms-3 gap-3">
                 <RouterLink to="/carrinho" class="text-dark">
+                    <span v-show="headerStore.pizzasNoCarrinho.length" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+                      {{ headerStore.pizzasNoCarrinho?.length }}
+                    </span>
                     <i class="bi bi-cart2 icones"></i>
                 </RouterLink>
 
