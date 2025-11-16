@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useHeaderStore } from '@/stores/header';
+import { useCarrinhoStore } from '@/stores/carrinho';
 
-const headerStore = useHeaderStore();
+
+const carrinhoStore = useCarrinhoStore();
 
 </script>
 
@@ -24,8 +25,8 @@ const headerStore = useHeaderStore();
             <!-- ICONES -->
             <div class="d-flex align-items-center ms-3 gap-3">
                 <RouterLink to="/carrinho" class="text-dark">
-                    <span v-show="headerStore.pizzasNoCarrinho.length" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
-                      {{ headerStore.pizzasNoCarrinho?.length }}
+                    <span v-show="carrinhoStore.pizzasNoCarrinho.length" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+                      {{ carrinhoStore.pizzasNoCarrinho?.length }}
                     </span>
                     <i class="bi bi-cart2 icones"></i>
                 </RouterLink>
