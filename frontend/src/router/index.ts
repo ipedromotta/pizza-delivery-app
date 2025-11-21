@@ -5,6 +5,7 @@ import Carrinho from '@/views/Carrinho.vue'
 import Cadastro from '@/views/Cadastro.vue'
 import { useAuthStore } from '@/stores/auth'
 import EsqueceuSenha from '@/views/EsqueceuSenha.vue'
+import MinhaConta from '@/views/MinhaConta.vue'
 
 
 const router = createRouter({
@@ -22,6 +23,14 @@ const router = createRouter({
       component: Login,
       meta: {
         isLogin: true
+      }
+    },
+    {
+      path: '/minha-conta',
+      name: 'minha-conta',
+      component: MinhaConta,
+      meta: {
+        requireLogin: true
       }
     },
     {

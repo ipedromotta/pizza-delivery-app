@@ -1,8 +1,28 @@
 <script setup lang="ts">
+import axios from 'axios';
+import { useAuthStore } from '@/stores/auth';
 import { useCarrinhoStore } from '@/stores/carrinho';
+import { useRouter } from 'vue-router';
 
 
 const carrinhoStore = useCarrinhoStore();
+const authStore = useAuthStore();
+const router = useRouter()
+
+function logout() {
+  
+  const token = localStorage.getItem("token")
+
+  localStorage.removeItem("token")
+  axios.post('/api/v1/token/logout/', token)
+    .catch((error) => {
+      console.log(error)
+    })
+  
+  axios.defaults.headers.common["Authorization"] = ""
+  authStore.removeToken()
+  router.push('/login')
+}
 
 </script>
 
@@ -31,9 +51,11 @@ const carrinhoStore = useCarrinhoStore();
                     <i class="bi bi-cart2 icones"></i>
                 </RouterLink>
 
-                <RouterLink to="/login" class="text-dark">
+                <RouterLink to="/minha-conta" class="text-dark">
                     <i class="bi bi-person icones"></i>
                 </RouterLink>
+                <span v-if="authStore.isAuthenticated" class="ms-3">Olá, {{ authStore.user.name }}. <a @click="logout" class="text-danger">Sair</a></span>
+                  
             </div>
 
         </div>
