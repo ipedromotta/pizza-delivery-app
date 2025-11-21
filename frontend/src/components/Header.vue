@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useAuthStore } from '@/stores/auth';
 import { useCarrinhoStore } from '@/stores/carrinho';
 import { useRouter } from 'vue-router';
+import { useBuscaStore } from '@/stores/busca'
 
+const buscaStore = useBuscaStore()
 
 const carrinhoStore = useCarrinhoStore();
 const authStore = useAuthStore();
@@ -39,7 +41,7 @@ function logout() {
             <!-- SEARCH (Só aparece no Desktop) -->
             <div class="search-box d-none d-md-flex align-items-center">
             <i class="bi bi-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Pesquisar pizzas, promoções...">
+            <input v-model="buscaStore.termoBusca" type="text" class="search-input" placeholder="Pesquisar pizzas, promoções...">
             </div>
 
             <!-- ICONES -->
@@ -64,7 +66,7 @@ function logout() {
         <div class="container d-flex d-md-none mt-2">
             <div class="search-box w-100 d-flex align-items-center">
             <i class="bi bi-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Buscar pizzas...">
+            <input v-model="buscaStore.termoBusca" type="text" class="search-input" placeholder="Pesquisar pizzas, promoções...">
             </div>
         </div>
     </nav>
