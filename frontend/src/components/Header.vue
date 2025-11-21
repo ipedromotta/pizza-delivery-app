@@ -1,7 +1,28 @@
 <script setup lang="ts">
-import { useHeaderStore } from '@/stores/header';
+import axios from 'axios';
+import { useAuthStore } from '@/stores/auth';
+import { useCarrinhoStore } from '@/stores/carrinho';
+import { useRouter } from 'vue-router';
 
-const headerStore = useHeaderStore();
+
+const carrinhoStore = useCarrinhoStore();
+const authStore = useAuthStore();
+const router = useRouter()
+
+function logout() {
+  
+  const token = localStorage.getItem("token")
+
+  localStorage.removeItem("token")
+  axios.post('/api/v1/token/logout/', token)
+    .catch((error) => {
+      console.log(error)
+    })
+  
+  axios.defaults.headers.common["Authorization"] = ""
+  authStore.removeToken()
+  router.push('/login')
+}
 
 </script>
 
@@ -24,15 +45,17 @@ const headerStore = useHeaderStore();
             <!-- ICONES -->
             <div class="d-flex align-items-center ms-3 gap-3">
                 <RouterLink to="/carrinho" class="text-dark">
-                    <span v-show="headerStore.pizzasNoCarrinho.length" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
-                      {{ headerStore.pizzasNoCarrinho?.length }}
+                    <span v-show="carrinhoStore.pizzasNoCarrinho.length" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+                      {{ carrinhoStore.pizzasNoCarrinho?.length }}
                     </span>
                     <i class="bi bi-cart2 icones"></i>
                 </RouterLink>
 
-                <RouterLink to="/login" class="text-dark">
+                <RouterLink to="/minha-conta" class="text-dark">
                     <i class="bi bi-person icones"></i>
                 </RouterLink>
+                <span v-if="authStore.isAuthenticated" class="ms-3">Olá, {{ authStore.user.name }}. <a @click="logout" class="text-danger">Sair</a></span>
+                  
             </div>
 
         </div>

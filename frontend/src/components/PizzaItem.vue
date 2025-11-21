@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { useHeaderStore } from '@/stores/header';
+import { useCarrinhoStore } from '@/stores/carrinho';
 import type { Pizza } from '@/types/Pizza';
+import { formatarMoeda } from '@/utils/helpers';
 
 
 const props = defineProps<{
   pizza: Pizza
 }>()
 
-const headerStore = useHeaderStore();
+const headerStore = useCarrinhoStore();
 
 </script>
 
@@ -16,7 +17,7 @@ const headerStore = useHeaderStore();
         <div class="card p-3 text-center mb-3">
             <img :src="pizza.imagem" class="img-fluid mb-2" />
             <h5>{{ pizza.nome }}</h5>
-            <p>{{ pizza.preco }} R$</p>
+            <p>{{ formatarMoeda(pizza.preco) }}</p>
             <button
                 class="btn btn-danger"
                 @click="headerStore.adicionarPizza(pizza)"
